@@ -85,7 +85,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               style: TextStyle(color: Colors.black, fontWeight:FontWeight.w600),
                               text: "Already have an account ?",
                               children: [
-                                TextSpan(text: "Sign In", style: TextStyle(
+                                TextSpan(text: "Login", style: TextStyle(
                                   color: Colors.green,
                                 ),recognizer: TapGestureRecognizer()..onTap =_onTapLogInScreen
                                 )

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:task_manager/ui/screens/forgot_password_verify_otp_screen.dart';
 import 'package:task_manager/ui/screens/sign_up_screen.dart';
 import 'package:task_manager/ui/widgets/screen_background.dart';
 
@@ -36,7 +37,7 @@ class _ForgotPasswordVerifyEmailScreenState extends State<ForgotPasswordVerifyEm
                     ),
                     SizedBox(height: 4),
                     Text(
-                      'A 6 digits OTP send to your email address',
+                      'A 6 digits OTP bill be sent to your email address',
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         color: Colors.grey
                       ),
@@ -51,31 +52,22 @@ class _ForgotPasswordVerifyEmailScreenState extends State<ForgotPasswordVerifyEm
 
                     SizedBox(height: 16),
                     FilledButton(
-                      onPressed: () {},
+                      onPressed: _onTapNextButton,
                       child: Icon(Icons.arrow_circle_right_outlined),
                     ),
                     SizedBox(height: 36,),
                     Center(
-                      child: Column(
-                        children: [
-                          TextButton(onPressed: () {}, child: Text("Forgot Password ?",
-                          style: TextStyle(
-                            color: Colors.grey
-                          ),
-                          )),
-                          RichText(
-                            text: TextSpan(
-                              style: TextStyle(color: Colors.black, fontWeight:FontWeight.w600),
-                              text: "Don't have an account ?",
-                              children: [
-                                TextSpan(text: "Sign Uop", style: TextStyle(
-                                  color: Colors.green,
-                                ),recognizer: TapGestureRecognizer()..onTap =_onTapSignUpScreen
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
+                      child: RichText(
+                        text: TextSpan(
+                          style: TextStyle(color: Colors.black, fontWeight:FontWeight.w600),
+                          text: "Already have an account ?",
+                          children: [
+                            TextSpan(text: "Login", style: TextStyle(
+                              color: Colors.green,
+                            ),recognizer: TapGestureRecognizer()..onTap =_onTapLoginScreen
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -88,10 +80,14 @@ class _ForgotPasswordVerifyEmailScreenState extends State<ForgotPasswordVerifyEm
     );
   }
 
-  void _onTapSignUpScreen(){
-    Navigator.push(
-      context, MaterialPageRoute(builder: (context) => SignUpScreen()),);
+  void _onTapLoginScreen(){
+    Navigator.pop(context);
   }
+ void _onTapNextButton(){
+    Navigator.push(
+      context, MaterialPageRoute(builder: (context) => ForgotPasswordVerifyOtpScreen()),);
+  }
+
 
   @override
   void dispose() {
