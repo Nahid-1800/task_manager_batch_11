@@ -1,21 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_manager/ui/screens/forgot_password_verify_email_screen.dart';
 import 'package:task_manager/ui/screens/sign_up_screen.dart';
 import 'package:task_manager/ui/widgets/screen_background.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class ForgotPasswordVerifyEmailScreen extends StatefulWidget {
+  const ForgotPasswordVerifyEmailScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ForgotPasswordVerifyEmailScreen> createState() => _ForgotPasswordVerifyEmailScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ForgotPasswordVerifyEmailScreenState extends State<ForgotPasswordVerifyEmailScreen> {
 
   final TextEditingController _emailTEController = TextEditingController();
-  final TextEditingController _passwordTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -33,21 +31,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     SizedBox(height: 82),
                     Text(
-                      'Get Started With',
+                      'Your Email Address',
                       style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      'A 6 digits OTP send to your email address',
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: Colors.grey
+                      ),
                     ),
                     SizedBox(height: 24),
                     TextFormField(
                       controller: _emailTEController,
                       decoration: InputDecoration(
-                          hintText: "Email"
-                      ),
-                    ),
-                    SizedBox(height: 8),
-                    TextFormField(
-                      controller: _passwordTEController ,
-                      decoration: InputDecoration(
-                          hintText: "Password"
+                        hintText: "Email"
                       ),
                     ),
 
@@ -60,17 +58,17 @@ class _LoginScreenState extends State<LoginScreen> {
                     Center(
                       child: Column(
                         children: [
-                          TextButton(onPressed: _onTapForgotPassword, child: Text("Forgot Password ?",
-                            style: TextStyle(
-                                color: Colors.grey
-                            ),
+                          TextButton(onPressed: () {}, child: Text("Forgot Password ?",
+                          style: TextStyle(
+                            color: Colors.grey
+                          ),
                           )),
                           RichText(
                             text: TextSpan(
                               style: TextStyle(color: Colors.black, fontWeight:FontWeight.w600),
                               text: "Don't have an account ?",
                               children: [
-                                TextSpan(text: "Sign Up", style: TextStyle(
+                                TextSpan(text: "Sign Uop", style: TextStyle(
                                   color: Colors.green,
                                 ),recognizer: TapGestureRecognizer()..onTap =_onTapSignUpScreen
                                 )
@@ -94,14 +92,10 @@ class _LoginScreenState extends State<LoginScreen> {
     Navigator.push(
       context, MaterialPageRoute(builder: (context) => SignUpScreen()),);
   }
-  void _onTapForgotPassword(){
-    Navigator.push(context, MaterialPageRoute(builder: (context) =>ForgotPasswordVerifyEmailScreen()));
-  }
 
   @override
   void dispose() {
     _emailTEController.dispose();
-    _passwordTEController.dispose();
     super.dispose();
   }
 }
